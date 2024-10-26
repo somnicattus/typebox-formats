@@ -1,0 +1,99 @@
+{
+    "name": "typebox-formats",
+    "version": "0.1.0",
+    "description": "JSON Schema string formats for TypeBox.",
+    "keywords": [
+        "typebox"
+    ],
+    "license": "MIT",
+    "author": {
+        "name": "somnicattus",
+        "email": "somnicattus@gmail.com",
+        "url": "https://github.com/somnicattus"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/somnicattus/typebox-formats"
+    },
+    "sideEffects": false,
+    "type": "module",
+    "exports": {
+        "default": "./dist/esm/index.js",
+        "import": "./dist/esm/index.js",
+        "require": "./dist/cjs/index.js",
+        "types": "./dist/types/index.d.ts"
+    },
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "jsnext:main": "dist/esm/index.js",
+    "types": "dist/types/index.d.ts",
+    "files": [
+        "dist/*",
+        "src/*",
+        "!**/__test__"
+    ],
+    "engines": {
+        "node": ">=10.24.1"
+    },
+    "scripts": {
+        "dev": "tsx src/index.ts",
+        "dev:watch": "tsx watch src/index.ts",
+        "start": "node dist",
+        "copy-ajv-formats": "rm -r ./src/ajv-formats-draft2019 | rm ./src/ajv-formats/* | pnpm run \"/^copy-ajv-formats:.*/\"",
+        "copy-ajv-formats:js": "cp ./node_modules/ajv-formats/dist/formats.js ./src/ajv-formats/formats.js",
+        "copy-ajv-formats:d.ts": "cp ./node_modules/ajv-formats/dist/formats.d.ts ./src/ajv-formats/formats.d.ts",
+        "copy-ajv-formats:LICENSE": "cp ./node_modules/ajv-formats/LICENSE ./src/ajv-formats/LICENSE",
+        "copy-ajv-formats:draft2019:js": "cp -r ./node_modules/ajv-formats-draft2019/formats ./src/ajv-formats-draft2019",
+        "copy-ajv-formats:draft2019:LICENSE": "cp ./node_modules/ajv-formats-draft2019/LICENSE ./src/ajv-formats-draft2019/LICENSE",
+        "build": "pnpm run clean && pnpm run \"/build:.*/\"",
+        "build:esm": "tsc --project tsconfig.esm.json",
+        "build:cjs": "tsc --project tsconfig.cjs.json",
+        "build:types": "tsc --project tsconfig.types.json",
+        "clean": "rm -r dist | true",
+        "test": "vitest run",
+        "test:watch": "vitest watch",
+        "bench": "vitest bench --run",
+        "bench:watch": "vitest bench --watch",
+        "lint": "prettier --write . && eslint --fix .",
+        "lint:check": "prettier --check . && eslint .",
+        "prepare": "husky"
+    },
+    "peerDependencies": {
+        "@sinclair/typebox": "*"
+    },
+    "optionalDependencies": {
+        "punycode": "^2.1.1",
+        "schemes": "^1.4.0",
+        "smtp-address-parser": "^1.0.3",
+        "uri-js": "^4.4.1"
+    },
+    "devDependencies": {
+        "@tsconfig/strictest": "^2.0.5",
+        "@types/eslint-config-prettier": "^6.11.3",
+        "@types/node": "^22.8.1",
+        "@vitest/coverage-v8": "^2.1.3",
+        "@vitest/eslint-plugin": "^1.1.7",
+        "@vitest/ui": "^2.1.3",
+        "ajv": "^8.17.1",
+        "ajv-formats": "^3.0.1",
+        "ajv-formats-draft2019": "^1.6.1",
+        "eslint": "^9.13.0",
+        "eslint-config-love": "^96.0.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "eslint-plugin-sonarjs": "^2.0.4",
+        "eslint-plugin-unicorn": "^56.0.0",
+        "eslint-plugin-unused-imports": "^4.1.4",
+        "husky": "^9.1.6",
+        "lint-staged": "^15.2.10",
+        "prettier": "^3.3.3",
+        "tsx": "^4.19.1",
+        "typescript": "^5.6.3",
+        "typescript-eslint": "^8.11.0",
+        "vitest": "^2.1.3"
+    },
+    "volta": {
+        "node": "22.10.0"
+    },
+    "packageManager": "pnpm@9.12.2"
+}

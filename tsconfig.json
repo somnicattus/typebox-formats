@@ -1,0 +1,18 @@
+/* Visit https://aka.ms/tsconfig to read more about this file */
+{
+    "extends": ["@tsconfig/strictest/tsconfig.json"],
+    "compilerOptions": {
+        /* Language and Environment */
+        "target": "ES2015",
+        "lib": ["ES2015"],
+        "types": ["vitest/globals"],
+
+        /* Modules */
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+
+        /* Emit */
+        "noEmit": true
+    },
+    "include": ["src", "./*.config.ts", "./*.config.js", ".husky/install.mjs"]
+}
